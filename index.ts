@@ -45,34 +45,24 @@ start = 0;
 previousTimeStamp = 0;
 
 const planes: Plane[] = [
-  {
-    emission: [0, 0, 0],
-    normal: [0, 1, 0],
-    pos: [0, 5, 0],
-    reflectionStrength: 1,
-    reflectivity: [1, 1, 1],
-    roughness: 0.01,
-    type: 'plane',
-  },
-
+  // {
+  //   emission: [0, 0, 0],
+  //   normal: [0, 1, 0],
+  //   pos: [0, 5, 0],
+  //   reflectionStrength: 1,
+  //   reflectivity: [1, 1, 1],
+  //   roughness: 0.01,
+  //   type: 'plane',
+  // },
 ];
 const spheres: Sphere[] = [
-  {
-    type: 'sphere',
-    pos: [-1.5, 0.1, 0.5],
-    radius: 0.5,
-    emission: [0, 0, 0],
-    reflectivity: [1, 1, 1],
-    roughness: 0.01,
-    reflectionStrength: 1,
-  },
   {
     type: 'sphere',
     pos: [1.5, 1, 0],
     radius: 0.5,
     emission: [1, 0, 0],
     reflectivity: [1, 1, 1],
-    roughness: 0.001,
+    roughness: 0.000001,
     reflectionStrength: 1,
   },
   {
@@ -81,16 +71,35 @@ const spheres: Sphere[] = [
     radius: 0.3,
     emission: [0, 0, 0],
     reflectivity: [1, 1, 1],
-    roughness: 0.001,
+    roughness: 0,
     reflectionStrength: 1,
+  },
+  {
+    type: 'sphere',
+    pos: [-1, 1, 0.5],
+    radius: 0.3,
+    emission: [0, 0, 1],
+    reflectivity: [1, 1, 1],
+    roughness: 0,
+    reflectionStrength: 1,
+  },
+
+  {
+    type: 'sphere',
+    pos: [0, 0, -2],
+    radius: 0.3,
+    emission: [0, 0, 0],
+    reflectivity: [0.5, 1, 1],
+    roughness: 0,
+    reflectionStrength: 0.1,
   },
   {
     type: 'sphere',
     pos: [0, -1, -2.5],
     radius: 0.3,
-    emission: [1, 1,1],
+    emission: [1, 1, 1],
     reflectivity: [1, 1, 1],
-    roughness: 0.00001,
+    roughness: 0,
     reflectionStrength: 1,
   },
 ];
