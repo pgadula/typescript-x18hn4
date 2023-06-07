@@ -76,11 +76,7 @@ function trace(ray: Ray, depth: number, objects: Object3d[]): Vec3 {
           direction: intersectionResult.normal,
         };
         let reflectedColor = vec3.multiply(
-          trace(
-            newRay,
-            depth - 1,
-            objects.filter((x) => x != object)
-          ),
+          trace(newRay, depth - 1, objects),
           object.reflectivity
         );
         reflectedColor = vec3.mulScalar(
