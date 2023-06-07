@@ -11,17 +11,20 @@ import {
 } from './definitions';
 import { Vec3, vec3 } from 'wgpu-matrix';
 
-const maxDepth = 2;
+const maxDepth = 4;
 const camera: Camera = {
   pos: [0, 0, -1],
   fov: 80,
   focalLength: 0.55,
 };
 
+let obj: Object3d[];
 export const shaderFn: PixelShaderProgram<{
   objects3d: Object3d[];
   numberOfRays: number;
 }> = (color, coord, resolution, mouse, { objects3d, numberOfRays }) => {
+  obj = objects3d;
+
   const max_x = resolution[0] - 1;
   const max_y = resolution[1] - 1;
   const aspectRatio = resolution[0] / resolution[1];
@@ -56,6 +59,7 @@ export const shaderFn: PixelShaderProgram<{
 function trace(ray: Ray, depth: number, objects: Object3d[]): Vec3 {
   for (let object of objects) {
     let intersectionResult: IntersectionResult;
+    let objects = obj.filter((x) => x != object);
     switch (object.type) {
       case 'sphere':
         intersectionResult = sphereIntersection(ray, object);
