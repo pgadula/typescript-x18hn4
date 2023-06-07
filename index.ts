@@ -45,15 +45,16 @@ start = 0;
 previousTimeStamp = 0;
 
 const planes: Plane[] = [
-  // {
-  //   emission: [0, 0, 0],
-  //   normal: [0, 1, 0],
-  //   pos: [0, 5, 0],
-  //   reflectionStrength: 1,
-  //   reflectivity: [1, 1, 1],
-  //   roughness: 0.01,
-  //   type: 'plane',
-  // },
+  {
+    emission: [0, 0, 0],
+    normal: [0, 1, 0],
+    pos: [0, 5, 0],
+    reflectionStrength: 1,
+    reflectivity: [1, 1, 1],
+    roughness: 0.001,
+    type: 'plane',
+    specular: 0.01,
+  },
 ];
 const spheres: Sphere[] = [
   {
@@ -62,8 +63,9 @@ const spheres: Sphere[] = [
     radius: 0.5,
     emission: [1, 0, 0],
     reflectivity: [1, 1, 1],
-    roughness: 0.000001,
+    roughness: 0,
     reflectionStrength: 1,
+    specular: 0.1,
   },
   {
     type: 'sphere',
@@ -73,6 +75,7 @@ const spheres: Sphere[] = [
     reflectivity: [1, 1, 1],
     roughness: 0,
     reflectionStrength: 1,
+    specular: 0.01,
   },
   {
     type: 'sphere',
@@ -82,6 +85,7 @@ const spheres: Sphere[] = [
     reflectivity: [1, 1, 1],
     roughness: 0,
     reflectionStrength: 1,
+    specular: 1,
   },
 
   {
@@ -92,6 +96,7 @@ const spheres: Sphere[] = [
     reflectivity: [0.5, 1, 1],
     roughness: 0,
     reflectionStrength: 0.1,
+    specular: 1,
   },
   {
     type: 'sphere',
@@ -101,6 +106,7 @@ const spheres: Sphere[] = [
     reflectivity: [1, 1, 1],
     roughness: 0,
     reflectionStrength: 1,
+    specular: 1,
   },
 ];
 const cubes: Cube[] = [];

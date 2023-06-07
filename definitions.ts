@@ -8,6 +8,7 @@ export interface Plane {
   roughness: number;
   normal: Vec3;
   reflectionStrength: number;
+  specular: number;
 }
 
 export interface Sphere {
@@ -18,6 +19,7 @@ export interface Sphere {
   reflectivity: Vec3;
   roughness: number;
   reflectionStrength: number;
+  specular: number;
 }
 
 export interface Cube {
@@ -28,6 +30,7 @@ export interface Cube {
   reflectivity: Vec3;
   roughness: number;
   reflectionStrength: number;
+  specular: number;
 }
 export type Object3d = Sphere | Plane | Cube;
 
