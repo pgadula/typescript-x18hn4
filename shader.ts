@@ -10,6 +10,7 @@ import {
   Sphere,
 } from './definitions';
 import { Vec3, vec3 } from 'wgpu-matrix';
+import { dot } from 'vec3';
 
 const maxDepth = 4;
 const camera: Camera = {
@@ -87,7 +88,12 @@ function trace(ray: Ray, depth: number, objects: Object3d[]): Vec3 {
           reflectedColor,
           object.reflectionStrength
         );
+        const specular = dot(
+          intersectionResult.normal,
+          intersectionResult.point
+        );
         emission = vec3.add(emission, reflectedColor);
+        emission = vec3.mulScalar(emission, specular);
       }
 
       return emission;
