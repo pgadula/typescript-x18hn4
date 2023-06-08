@@ -10,8 +10,7 @@ import {
   Sphere,
 } from './definitions';
 import { Vec3, vec3 } from 'wgpu-matrix';
-import { dot } from 'vec3';
-const maxDepth = 4;
+const maxDepth = 6;
 const camera: Camera = {
   pos: [0, 0, -1],
   fov: 60,
@@ -226,7 +225,6 @@ function cubeIntersection(ray: Ray, cube: Cube): IntersectionResult {
   } else if (Math.abs(intersectionPoint[2] - (cubePosZ + sizeZ)) < 0.0001) {
     normal = [0, 0, 1];
   }
-  console.log(intersectionPoint)
   return {
     point: intersectionPoint,
     normal: vec3.normalize(normal) as Vec3,
