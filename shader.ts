@@ -78,13 +78,8 @@ function trace(ray: Ray, depth: number, objects: Object3d[]): Vec3 {
           origin: intersectionResult.point,
           direction: intersectionResult.normal,
         };
-        // Calculate the reflected ray direction
         const reflectDir = vec3.sub(ray.direction, intersectionResult.normal);
 
-        // Calculate the specular intensity based on the dot product between the reflected ray direction and the viewing direction
-        // const specularIntensity = Math.pow(Math.max(vec3.dot(reflectDir, vec3.negate(ray.direction)), 0), object.specular);
-
-        // Calculate the reflected color recursively
         const reflectedColor = vec3.multiply(
           trace(newRay, depth - 1, objects),
           object.reflectivity
@@ -97,7 +92,7 @@ function trace(ray: Ray, depth: number, objects: Object3d[]): Vec3 {
         // Apply the specular reflection to the emission color
         emission = vec3.mulScalar(
           vec3.add(emission, reflectedColor),
-          lightStrength * 1.5
+          lightStrength * 2
         );
       }
 

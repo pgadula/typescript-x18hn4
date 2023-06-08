@@ -3,8 +3,8 @@ import './style.css';
 import { createDrawer } from './drawer';
 import { shaderFn } from './shader';
 import { Cube, Object3d, Plane, Sphere } from './definitions';
-const height = 1000;
-const width = 1000;
+const height = 500;
+const width = 500;
 let data: { numberOfRays: number; objects3d: Object3d[] };
 const canvas = document.getElementById('canvas') as HTMLCanvasElement;
 const numberOfRays = document.getElementById(
