@@ -11,11 +11,10 @@ import {
 } from './definitions';
 import { Vec3, vec3 } from 'wgpu-matrix';
 import { dot } from 'vec3';
-
 const maxDepth = 4;
 const camera: Camera = {
   pos: [0, 0, -1],
-  fov: 80,
+  fov: 60,
   focalLength: 0.55,
 };
 

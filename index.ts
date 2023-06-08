@@ -59,7 +59,7 @@ const planes: Plane[] = [
 const spheres: Sphere[] = [
   {
     type: 'sphere',
-    pos: [2, 1.5, 2],
+    pos: [1.2, 1.7, 2],
     radius: 0.9,
     emission: [1, 1, 1],
     reflectivity: [1, 1, 1],
@@ -69,11 +69,11 @@ const spheres: Sphere[] = [
   },
   {
     type: 'sphere',
-    pos: [-2, -0.5, 1],
-    radius: 0.3,
+    pos: [-2, -0.5, 0.9],
+    radius: 0.1,
     emission: [0, 0, 0],
-    reflectivity: [1, 1, 1],
-    roughness: 0.01,
+    reflectivity: [1, 0, 0],
+    roughness: 0.1,
     reflectionStrength: 1,
     specular: 0.1,
   },
@@ -93,7 +93,7 @@ const spheres: Sphere[] = [
     radius: 0.3,
     emission: [0, 0, 0],
     reflectivity: [0, 0.5, 0.5],
-    roughness: 0.01,
+    roughness: 0.001,
     reflectionStrength: 1,
     specular: 0.01,
   },
@@ -127,7 +127,6 @@ const spheres: Sphere[] = [
     reflectionStrength: 1,
     specular: 1,
   },
-
 ];
 const cubes: Cube[] = [];
 const objects3d: Array<Object3d> = [...spheres, ...planes, ...cubes].sort(
