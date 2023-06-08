@@ -94,7 +94,7 @@ function trace(ray: Ray, depth: number, objects: Object3d[]): Vec3 {
         const lightStrength = vec3.dot(intersectionResult.normal, ray.direction)
 
         // Apply the specular reflection to the emission color
-        emission = vec3.mulScalar(vec3.add(emission, reflectedColor), lightStrength*2);
+        emission = vec3.mulScalar(vec3.add(emission, reflectedColor), lightStrength*1.5);
       }
 
       return emission;
