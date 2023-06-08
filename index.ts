@@ -48,7 +48,7 @@ const planes: Plane[] = [
   // {
   //   emission: [0, 0, 0],
   //   normal: [0, 1, 0],
-  //   pos: [0, 5, 0],
+  //   pos: [0, -5, 0],
   //   reflectionStrength: 1,
   //   reflectivity: [1, 1, 1],
   //   roughness: 0.001,
@@ -124,7 +124,7 @@ const spheres: Sphere[] = [
     pos: [0, -2, 1],
     radius: 1,
     emission: [0, 0, 0],
-    reflectivity: [0.5, 0.3, 0.2],
+    reflectivity: [0.5, 0.5, 0.5],
     roughness: 0.02,
     reflectionStrength: 1,
     specular: 1,
