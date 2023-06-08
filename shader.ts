@@ -90,10 +90,16 @@ function trace(ray: Ray, depth: number, objects: Object3d[]): Vec3 {
           trace(newRay, depth - 1, objects),
           object.reflectivity
         );
-        const lightStrength = vec3.dot(intersectionResult.normal, ray.direction)
+        const lightStrength = vec3.dot(
+          intersectionResult.normal,
+          ray.direction
+        );
 
         // Apply the specular reflection to the emission color
-        emission = vec3.mulScalar(vec3.add(emission, reflectedColor), lightStrength*1.5);
+        emission = vec3.mulScalar(
+          vec3.add(emission, reflectedColor),
+          lightStrength * 1.5
+        );
       }
 
       return emission;
@@ -220,7 +226,7 @@ function cubeIntersection(ray: Ray, cube: Cube): IntersectionResult {
   } else if (Math.abs(intersectionPoint[2] - (cubePosZ + sizeZ)) < 0.0001) {
     normal = [0, 0, 1];
   }
-
+  console.log(intersectionPoint)
   return {
     point: intersectionPoint,
     normal: vec3.normalize(normal) as Vec3,
