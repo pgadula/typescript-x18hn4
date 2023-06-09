@@ -13,7 +13,7 @@ const maxDepth = 6;
 const camera: Camera = new Camera([0, 0, 0], 60, 0.55);
 
 let obj: Object3d[];
-export const shaderFn: PixelShaderProgram<{
+export const rayTracer: PixelShaderProgram<{
   objects3d: Object3d[];
   numberOfRays: number;
 }> = (color, coord, resolution, mouse, { objects3d, numberOfRays }) => {
@@ -51,8 +51,7 @@ function trace(ray: Ray, depth: number, objects: Object3d[]): Vec3 {
   for (let object of objects) {
     let intersectionResult = ray.intersect(object);
     let objects = obj.filter((x) => x != object);
-    
-  
+
     if (intersectionResult) {
       let emission = object.emission;
       if (depth >= 0) {
@@ -84,6 +83,3 @@ function trace(ray: Ray, depth: number, objects: Object3d[]): Vec3 {
 
   return [0, 0, 0];
 }
-
-
-  

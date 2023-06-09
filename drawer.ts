@@ -1,6 +1,6 @@
 import { Vec2, Vec3, Vec4 } from 'wgpu-matrix';
 
-export type PixelShaderProgram<T> = (
+export type ShaderProgram<T> = (
   fragColor: Vec4,
   fragCoord: Vec2,
   viewport: Vec2,
@@ -33,7 +33,7 @@ function fragmentProgramFactor<T>(
   size: Vec2,
   mouse: Vec2
 ) {
-  return (fn: PixelShaderProgram<T>, data: T) => {
+  return (shader: ShaderProgram<T>, data: T) => {
     for (let y = 0; y < size[1]; y++) {
       for (let x = 0; x < size[0]; x++) {
         if (x === 0) {
@@ -48,7 +48,7 @@ function fragmentProgramFactor<T>(
         ];
 
         const fragCoord: Vec2 = [x, y];
-        const result = fn(fragColor, fragCoord, size, mouse, data);
+        const result = shader(fragColor, fragCoord, size, mouse, data);
         pixels[index] = result[0] * 255;
         pixels[index + 1] = result[1] * 255;
         pixels[index + 2] = result[2] * 255;

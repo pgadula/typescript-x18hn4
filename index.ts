@@ -1,7 +1,7 @@
 // Import stylesheets
 import './style.css';
 import { createDrawer } from './drawer';
-import { shaderFn } from './shader';
+import { rayTracer } from './shader';
 import { Cube, Object3d, Plane, Sphere } from './definitions';
 const height = 500;
 const width = 500;
@@ -19,9 +19,13 @@ const realyTimeRendering = document.getElementById(
 canvas.height = height;
 canvas.width = width;
 let ms = [0, 0];
+const ctx: CanvasRenderingContext2D = canvas.getContext('2d');
+const image = new ImageData(height, width);
+const drawer = createDrawer(image.data, [width, height], ms);
+let shaderRunner = drawer.shader();
 renderButton.addEventListener('click', () => {
   data.numberOfRays = +numberOfRays.value;
-  shaderRunner(shaderFn, data);
+  shaderRunner(rayTracer, data);
 });
 realyTimeRendering.addEventListener('click', () => {
   realTimeRendering != realTimeRendering;
@@ -33,9 +37,6 @@ canvas.addEventListener('mousemove', (m) => {
   ms[1] = y;
 });
 
-const ctx: CanvasRenderingContext2D = canvas.getContext('2d');
-const image = new ImageData(height, width);
-const drawer = createDrawer(image.data, [width, height], ms);
 let realTimeRendering = false;
 
 let start,
@@ -165,10 +166,9 @@ data = {
   numberOfRays: +numberOfRays.value,
   objects3d,
 };
-let shaderRunner = drawer.shader();
 function animate() {
   if (realTimeRendering) {
-    shaderRunner(shaderFn, data);
+    shaderRunner(rayTracer, data);
   }
 }
 function step(timestampMs: number) {
