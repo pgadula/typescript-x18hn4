@@ -1,6 +1,5 @@
 import { vec3, Vec3 } from 'wgpu-matrix';
-import { sign } from './vector';
-
+import { getRandomUnitVector } from './utilis';
 export interface Plane {
   type: 'plane';
   pos: Vec3;
