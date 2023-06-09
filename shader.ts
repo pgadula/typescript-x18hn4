@@ -11,11 +11,7 @@ import {
 } from './definitions';
 import { Vec3, vec3 } from 'wgpu-matrix';
 const maxDepth = 6;
-const camera: Camera = {
-  pos: [0, 0, -1],
-  fov: 60,
-  focalLength: 0.55,
-};
+const camera: Camera = new Camera([0, 0, 0], 60, 0.55);
 
 let obj: Object3d[];
 export const shaderFn: PixelShaderProgram<{
@@ -43,10 +39,7 @@ export const shaderFn: PixelShaderProgram<{
     ndcY * halfHeight,
     -camera.focalLength,
   ]);
-  const ray: Ray = {
-    direction,
-    origin: camera.pos,
-  };
+  const ray: Ray = new Ray(camera.origin, direction);
   const results = [];
   for (let i = 0; i < numberOfRays; i++) {
     const tracedColor = trace(ray, maxDepth, objects3d);
@@ -74,10 +67,10 @@ function trace(ray: Ray, depth: number, objects: Object3d[]): Vec3 {
     if (intersectionResult) {
       let emission = object.emission;
       if (depth >= 0) {
-        const newRay: Ray = {
-          origin: intersectionResult.point,
-          direction: intersectionResult.normal,
-        };
+        const newRay: Ray = new Ray(
+          intersectionResult.point,
+          intersectionResult.normal
+        );
         const reflectDir = vec3.sub(ray.direction, intersectionResult.normal);
 
         const reflectedColor = vec3.multiply(

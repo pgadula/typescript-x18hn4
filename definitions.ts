@@ -45,7 +45,21 @@ export interface Camera {
   focalLength: number;
 }
 
-export type Ray = {
+export class Ray {
   direction: Vec3;
   origin: Vec3;
-};
+  constructor(origin: Vec3, direction: Vec3) {
+    this.origin = origin;
+    this.direction = direction;
+  }
+}
+export class Camera {
+  origin: Vec3;
+  fov: number;
+  focalLength: number;
+  constructor(origin: Vec3, fov: number, focalLength: number) {
+    this.origin = origin;
+    this.fov = fov;
+    this.focalLength = focalLength;
+  }
+}
