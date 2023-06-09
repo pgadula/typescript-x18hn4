@@ -4,11 +4,9 @@ export interface Plane {
   type: 'plane';
   pos: Vec3;
   emission: Vec3;
-  reflectivity: Vec3;
-  roughness: number;
+  material: Material;
+
   normal: Vec3;
-  reflectionStrength: number;
-  specular: number;
 }
 
 export interface Sphere {
@@ -16,10 +14,7 @@ export interface Sphere {
   pos: Vec3;
   radius: number;
   emission: Vec3;
-  reflectivity: Vec3;
-  roughness: number;
-  reflectionStrength: number;
-  specular: number;
+  material: Material;
 }
 
 export interface Cube {
@@ -27,10 +22,7 @@ export interface Cube {
   pos: Vec3;
   size: Vec3;
   emission: Vec3;
-  reflectivity: Vec3;
-  roughness: number;
-  reflectionStrength: number;
-  specular: number;
+  material: Material;
 }
 export type Object3d = Sphere | Plane | Cube;
 
@@ -43,6 +35,13 @@ export interface Camera {
   pos: Vec3;
   fov: number;
   focalLength: number;
+}
+
+export interface Material {
+  reflectivity: Vec3;
+  roughness: number;
+  reflectionStrength: number;
+  specular: number;
 }
 
 export class Ray {

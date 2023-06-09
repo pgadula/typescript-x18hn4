@@ -75,7 +75,7 @@ function trace(ray: Ray, depth: number, objects: Object3d[]): Vec3 {
 
         const reflectedColor = vec3.multiply(
           trace(newRay, depth - 1, objects),
-          object.reflectivity
+          object.material.reflectivity
         );
         const lightStrength = vec3.dot(
           intersectionResult.normal,
@@ -113,7 +113,7 @@ function sphereIntersection(ray: Ray, sphere: Sphere): IntersectionResult {
   );
   let roughness = vec3.mulScalar(
     getRandomUnitVector(ray.direction),
-    sphere.roughness
+    sphere.material.roughness
   );
   let normal = vec3.normalize(vec3.sub(intersection, ray.origin));
   normal = vec3.add(normal, roughness);
@@ -144,7 +144,7 @@ function planeIntersection(ray: Ray, plane: Plane): IntersectionResult {
   ) as Vec3;
   let roughness = vec3.mulScalar(
     getRandomUnitVector(ray.direction),
-    plane.roughness
+    plane.material.roughness
   );
   let normal = vec3.normalize(vec3.sub(intersectionPoint, ray.origin));
   normal = vec3.add(normal, roughness);
