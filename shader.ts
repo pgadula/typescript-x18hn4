@@ -1,4 +1,4 @@
-import { PixelShaderProgram } from './drawer';
+import { ShaderProgram } from './drawer';
 import {
   Camera,
   Cube,
@@ -10,10 +10,11 @@ import {
 } from './definitions';
 import { Vec3, vec3 } from 'wgpu-matrix';
 const maxDepth = 6;
+
 const camera: Camera = new Camera([0, 0, 0], 60, 0.55);
 
 let obj: Object3d[];
-export const rayTracer: PixelShaderProgram<{
+export const rayTracer: ShaderProgram<{
   objects3d: Object3d[];
   numberOfRays: number;
 }> = (color, coord, resolution, mouse, { objects3d, numberOfRays }) => {
