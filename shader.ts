@@ -11,7 +11,7 @@ import {
 import { Vec3, vec3 } from 'wgpu-matrix';
 const maxDepth = 6;
 
-const camera: Camera = new Camera([0, 0, 0], 60, 0.55);
+const camera: Camera = new Camera([0, 0, 0], 60, 0.35);
 
 let obj: Object3d[];
 export const rayTracer: ShaderProgram<{
